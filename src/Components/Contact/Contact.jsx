@@ -2,31 +2,53 @@ import React from "react";
 import "./Contact.css";
 import theme_pattern from "../../assets/theme_pattern.svg";
 import mail_icon from "../../assets/mail_icon.svg";
-import location_icon from "../../assets/location_icon.svg";
+import location_icon from "../../assets/placeholder.png";
 import call_icon from "../../assets/call_icon.svg";
+import isnta_icon from "../../assets/instagram.png";
+import link_icon from "../../assets/linkedin.png";
 
 const Contact = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    // enter your own web3 forms access key below
+    // Validation: Check if the required fields are filled
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
 
-    formData.append("access_key", "xxxxxxxxxxxxxxxxxxxxxxxx");
+    if (!name || !email || !message) {
+      alert("Please fill in all the required fields.");
+      return;
+    }
+
+    // enter your own web3 forms access key below
+    formData.append("access_key", "5fb7d566-5b8c-4990-85fd-7c7d6dcfbdca");
 
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: json,
-    }).then((res) => res.json());
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      }).then((res) => res.json());
 
-    alert(res.message);
+      if (res.success) {
+        alert("Your message has been sent successfully!");
+        event.target.reset();
+      } else {
+        alert(
+          "There was an error sending your message. Please try again later."
+        );
+      }
+    } catch (error) {
+      alert("Error: " + error.message);
+    }
   };
 
   return (
@@ -47,10 +69,38 @@ const Contact = () => {
           </p>
           <div className="contact-details">
             <div className="contact-detail">
-              <img src={mail_icon} alt="" /> <p>asifhabeeb1205@gmail.com</p>
+              <img src={mail_icon} alt="" />
+              <a
+                style={{ textDecoration: "none" }}
+                href="mailto:asifhabeeb1205@gmail.com"
+              >
+                <p>asifhabeeb1205@gmail.com</p>
+              </a>
             </div>
             <div className="contact-detail">
               <img src={call_icon} alt="" /> <p>+91 9074939609</p>
+            </div>
+            <div className="contact-detail">
+              <img src={isnta_icon} alt="" />
+              <a
+                style={{ textDecoration: "none" }}
+                href="https://www.instagram.com/magician.asif/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>magician.asif</p>
+              </a>
+            </div>
+            <div className="contact-detail">
+              <img src={link_icon} alt="" />
+              <a
+                style={{ textDecoration: "none" }}
+                href="https://www.linkedin.com/in/asif-habeeb-7059b0191/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>Asif Habeeb</p>
+              </a>
             </div>
             <div className="contact-detail">
               <img src={location_icon} alt="" /> <p>Kerala, India</p>
@@ -62,6 +112,8 @@ const Contact = () => {
           <input type="text" placeholder="Enter your name" name="name" />
           <label htmlFor="">Your Email</label>
           <input type="email" placeholder="Enter your email" name="email" />
+          {/* <label htmlFor="">Your Mobile Number</label>
+          <input type="number" placeholder="Enter your mobile number" name="mobile" /> */}
           <label htmlFor="">Write your message here</label>
           <textarea
             name="message"
