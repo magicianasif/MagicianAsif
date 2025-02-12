@@ -4,6 +4,12 @@
     justify-content: space-between;
     margin: 20px 10%;
 }
+.navbar h2{
+    background: linear-gradient(270deg, #DF8908 10%, #B415FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .nav-menu{
     display: flex;
     align-items: center;
