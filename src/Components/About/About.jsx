@@ -31,6 +31,12 @@ const About = () => {
               excellence, and a touch of creativity, I ensure that every project
               delivers an effortless and almost magical user journey.
             </p>
+            <p>
+              Beyond coding, I am also a close-up magician who loves to create
+              moments of wonder and astonishment. Performing magic in streets, I engage audiences with sleight-of-hand tricks,
+              mind-reading acts, and interactive illusions that leave lasting
+              impressions.
+            </p>
           </div>
           <div className="about-skills">
             <div className="about-skill">
