@@ -16,13 +16,17 @@ const Hero = () => {
   return (
     <div id="home" className="hero">
       <img src={profile_img} alt="" className="profile-img" />
-      <h1>
-        <span>I'm Asif Habeeb,</span> frontend developer cum close up magician
+      {/* <h1>
+        <span>I'm Asif Habeeb,</span> frontend developer and a close up magician
         based in India.
+      </h1> */}
+      <h1>
+        <span>FRONTEND DEVELOPER | CLOSE-UP MAGICIAN</span>
       </h1>
       <p>
-        I am a frontend developer from Kerala, India with 3+ years of experience
-        in multiple companies like Cubet Techno Labs and Kalkitech.
+        I'm Asif Habeeb, a frontend developer and close-up magician based in Kerala,
+        India. I have 3+ years of experience as a frontend developer, having
+        worked at companies like Cubet Techno Labs and Kalkitech.
       </p>
       <div className="hero-action">
         <div className="hero-connect">
